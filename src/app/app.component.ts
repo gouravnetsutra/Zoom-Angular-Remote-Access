@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ZoomMtg } from 'zoomus-jssdk';
+// import { ZoomMtg } from 'zoomus-jssdk';
+declare var ZoomMtg;
 
-ZoomMtg.setZoomJSLib("https://source.zoom.us/1.6.0/lib", "/av")
+ZoomMtg.setZoomJSLib("https://source.zoom.us/1.6.1/lib", "/av")
 ZoomMtg.preLoadWasm();
 ZoomMtg.prepareJssdk();
 
@@ -11,12 +12,15 @@ ZoomMtg.prepareJssdk();
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'test';
+
+  constructor() {
+
+  }
 
   meetConfig = {
-    apiKey: '--apiKey--',
-    apiSecret: '--apiSecret--',
-    meetingNumber: '--meetingNumber--',
+    apiKey: '',
+    apiSecret: '',
+    meetingNumber: '',
     userName: 'Angular',
     passWord: "",
     leaveUrl: "http://localhost:4200",
@@ -57,7 +61,5 @@ export class AppComponent implements OnInit {
         console.log(res);
       }
     });
-    
-   
   }
 }
